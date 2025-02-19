@@ -1,4 +1,25 @@
 HELP.md
+
+
+# 忽略所有 .log 文件
+*.log
+
+# 忽略特定文件
+/config/local.properties
+
+# 忽略整个目录
+/build/
+/node_modules/
+
+# 忽略所有 .class 文件（Java 编译文件）
+*.class
+
+# 忽略特定文件夹下的某个文件
+/logs/debug.log
+
+# 不忽略某个特定文件（即使其他规则匹配）
+!/logs/important.log
+
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/

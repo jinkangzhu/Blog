@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea26654b-98c2-404d-9d1c-d60c1c85588e" name="更改" comment="不知道什么东西">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+    <list default="true" id="ea26654b-98c2-404d-9d1c-d60c1c85588e" name="更改" comment="终于能够打包了，搞了一晚上难绷">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blog/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blog/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/pom.xml" afterDir="false" />
@@ -120,7 +118,7 @@
       <workItem from="1739893693280" duration="742000" />
       <workItem from="1739969410769" duration="4320000" />
       <workItem from="1739973757469" duration="174000" />
-      <workItem from="1739973941821" duration="1695000" />
+      <workItem from="1739973941821" duration="4606000" />
     </task>
     <task id="LOCAL-00001" summary="项目初始化">
       <option name="closed" value="true" />
@@ -146,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739891208683</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="终于能够打包了，搞了一晚上难绷">
+      <option name="closed" value="true" />
+      <created>1739975889183</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1739975889183</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -168,6 +174,7 @@
     <MESSAGE value="项目初始化" />
     <MESSAGE value="加了一个启动语句" />
     <MESSAGE value="不知道什么东西" />
-    <option name="LAST_COMMIT_MESSAGE" value="不知道什么东西" />
+    <MESSAGE value="终于能够打包了，搞了一晚上难绷" />
+    <option name="LAST_COMMIT_MESSAGE" value="终于能够打包了，搞了一晚上难绷" />
   </component>
 </project>

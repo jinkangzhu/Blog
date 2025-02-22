@@ -1,31 +1,24 @@
 package com.blog.pojo;
 
+import lombok.Data;
+
+import java.sql.Date;
+import java.time.LocalDateTime;
+
+
+@Data
 public class User {
-    private int id;
-    private String name;
-    private Integer age;
-    public User() {}
-    public User(int id, String name, Integer age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-    }
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getName() {
-        return name;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public Integer getAge() {
-        return age;
-    }
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+    private String id;
+    private String username;
+    private String password;
+    private String email;
+    private String phone;
+    private String status;
+    private String createBy;
+    private LocalDateTime createDate;
+    private String updateBy;
+    private LocalDateTime updateDate;
+    private String deleteFlag;
+
+    // Getters and Setters
 }

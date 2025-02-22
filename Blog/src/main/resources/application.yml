@@ -1,6 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.80.129/blog
+    url: jdbc:mysql://8.134.114.118:3306/boke?useSSL=false&serverTimezone=UTC
     username: root
-    password: 1234
+    password: suifeng1234
+
+jwt:
+  secretKey: suifeng

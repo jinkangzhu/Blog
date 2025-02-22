@@ -4,10 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea26654b-98c2-404d-9d1c-d60c1c85588e" name="更改" comment="终于能够打包了，搞了一晚上难绷">
+    <list default="true" id="ea26654b-98c2-404d-9d1c-d60c1c85588e" name="更改" comment="乱七八糟的配置">
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/build/HeaderManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/build/RequestManagerBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/build/RequestManagers.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/context/RequestContext.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/dto/LoginRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/dto/LoginResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/filter/JwtRequestFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/properties/JwtProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/service/LoginService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/service/impl/LoginServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/utils/HttpClientUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/utils/JwtUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/vo/RequestContextManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Blog/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blog/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Blog/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/src/main/java/com/blog/controller/HelloWorld.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/src/main/java/com/blog/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/src/main/java/com/blog/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/src/main/java/com/blog/pojo/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/src/main/java/com/blog/pojo/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/src/main/java/com/blog/service/UserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/src/main/java/com/blog/service/impl/UserServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blog/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/Blog/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +68,9 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2siXC9CsNavi5xCUQAYMtDqjFR3" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -65,7 +90,7 @@
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Develop/Code/DevSpace&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Develop/Code/DevSpace/Blog/src/main/java/com/blog/utils&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -83,6 +108,11 @@
     ]
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Develop\Code\DevSpace\Blog\src\main\java\com\blog\utils" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="BlogApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="Blog" />
@@ -118,7 +148,11 @@
       <workItem from="1739893693280" duration="742000" />
       <workItem from="1739969410769" duration="4320000" />
       <workItem from="1739973757469" duration="174000" />
-      <workItem from="1739973941821" duration="4606000" />
+      <workItem from="1739973941821" duration="5219000" />
+      <workItem from="1740052348112" duration="777000" />
+      <workItem from="1740149162072" duration="2478000" />
+      <workItem from="1740200160263" duration="11067000" />
+      <workItem from="1740239582273" duration="10157000" />
     </task>
     <task id="LOCAL-00001" summary="项目初始化">
       <option name="closed" value="true" />
@@ -152,7 +186,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739975889183</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="乱七八糟的配置">
+      <option name="closed" value="true" />
+      <created>1739980252860</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1739980252860</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +217,7 @@
     <MESSAGE value="加了一个启动语句" />
     <MESSAGE value="不知道什么东西" />
     <MESSAGE value="终于能够打包了，搞了一晚上难绷" />
-    <option name="LAST_COMMIT_MESSAGE" value="终于能够打包了，搞了一晚上难绷" />
+    <MESSAGE value="乱七八糟的配置" />
+    <option name="LAST_COMMIT_MESSAGE" value="乱七八糟的配置" />
   </component>
 </project>

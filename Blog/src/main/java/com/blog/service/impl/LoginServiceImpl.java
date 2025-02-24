@@ -1,22 +1,15 @@
 package com.blog.service.impl;
 
-import com.blog.build.RequestManagers;
-import com.blog.constant.JwtClaimsConstant;
 import com.blog.dto.LoginRequest;
 import com.blog.dto.LoginResponse;
 import com.blog.mapper.UserMapper;
 import com.blog.pojo.User;
-import com.blog.properties.JwtProperties;
 import com.blog.service.LoginService;
-import com.blog.utils.JwtUtil;
-import com.blog.vo.RequestContextManager;
 import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.UUID;
 
 
@@ -27,10 +20,7 @@ public class LoginServiceImpl implements LoginService {
     private UserMapper userMapper;
 
     @Autowired
-    private JwtProperties jwtProperties;
-
-//    @Autowired
-//    private PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public LoginResponse login(LoginRequest loginRequest) {
@@ -71,11 +61,10 @@ public class LoginServiceImpl implements LoginService {
             throw new RuntimeException("用户名用过了，亲~");
         }
 
-//        // 加密用户密码
-//        String encodedPassword = passwordEncoder.encode(user.getPassword());
-//        user.setPassword(encodedPassword);
+        // 加密用户密码
+        String encodedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodedPassword);
 
-        user.setPassword(user.getPassword());
         // TODO 改成雪花算法
         UUID uuid = UUID.randomUUID();
         user.setId(uuid.toString());
@@ -86,11 +75,8 @@ public class LoginServiceImpl implements LoginService {
 
     // 生成 Token（简化版，实际项目中使用 JWT）
     private String generateToken(User user) {
-        Map<String, Object> claims = new HashMap<>();
-        RequestContextManager requestContextManager = new RequestContextManager(user);
-        claims.put(JwtClaimsConstant.REQUEST_CONTEXT_MANAGER, requestContextManager);
-        String token = JwtUtil.createJWT(jwtProperties.getSecretKey(), jwtProperties.getTtl(), claims);
-        System.out.println("生成的token：" + token);
-        return token;
+
+        //TODO 在实际项目中，你应该使用 JWT（JSON Web Token）生成加密的 token
+        return "simple_token_" + user.getUsername();  // 简化示例
     }
 }

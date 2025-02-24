@@ -12,9 +12,9 @@ public class RequestManagerBuilder {
 
     private RequestContextManager requestContextManager;
 
-//    public RequestManagerBuilder() {
-//        this.requestContextManager = new RequestContextManager();
-//    }
+    public RequestManagerBuilder() {
+        this.requestContextManager = new RequestContextManager();
+    }
 
     public RequestManagerBuilder buildUser(Claims claims) {
 

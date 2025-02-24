@@ -10,5 +10,7 @@ public class JwtProperties {
 
     @Value("${jwt.secretKey}")
     private String secretKey;
+    @Value("${jwt.ttl}")
+    private long ttl;
 
 }

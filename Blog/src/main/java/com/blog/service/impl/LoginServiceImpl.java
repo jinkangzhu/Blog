@@ -7,7 +7,6 @@ import com.blog.pojo.User;
 import com.blog.properties.JwtProperties;
 import com.blog.service.LoginService;
 import com.blog.utils.JwtUtil;
-import com.sun.xml.internal.bind.v2.TODO;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,5 +1,6 @@
 package com.blog.utils;
 
+import com.blog.constant.JwtClaimsConstant;
 import com.blog.properties.JwtProperties;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
@@ -60,10 +61,16 @@ public class JwtUtil {
         return claims;
     }
 
-    // 校验 JWT 是否有效
+    /**
+     * 校验token是否有效
+     * @param secretKey jwt密钥
+     * @param token 加密后的 token
+     * @return
+     */
     public static boolean validateToken(String secretKey,String token) {
         try {
             Claims claims = parseJWT(secretKey,token);
+            System.out.println(claims.get(JwtClaimsConstant.REQUEST_CONTEXT_MANAGER));
             return !claims.getExpiration().before(new Date());
         } catch (Exception e) {
             return false;

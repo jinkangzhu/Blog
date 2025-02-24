@@ -1,6 +1,5 @@
 package com.blog.build;
 
-import com.blog.pojo.User;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.impl.DefaultJwtBuilder;
 

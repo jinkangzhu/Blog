@@ -6,7 +6,10 @@ import com.blog.pojo.User;
 import com.blog.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -33,10 +36,5 @@ public class UserController {
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Registration failed: " + e.getMessage());
         }
-    }
-
-    @GetMapping("/testLogin")
-    public ResponseEntity<String> getUser() {
-        return ResponseEntity.status(200).body("可以通过测试");
     }
 }

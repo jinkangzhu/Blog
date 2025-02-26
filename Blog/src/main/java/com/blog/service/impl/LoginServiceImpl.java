@@ -81,12 +81,9 @@ public class LoginServiceImpl implements LoginService {
 
     // 生成 Token（简化版，实际项目中使用 JWT）
     private String generateToken(User user) {
-
-//        //TODO 在实际项目中，你应该使用 JWT（JSON Web Token）生成加密的 token
-//        return "simple_token_" + user.getUsername();  // 简化示例
         Map<String, Object> claims = new HashMap<>();
         claims.put("user", user);
-        return JwtUtil.createJWT(jwtProperties.getSecretKey(), 3600, claims);
+        return JwtUtil.createJWT(jwtProperties.getSecretKey(), 3600000, claims);
 
     }
 }

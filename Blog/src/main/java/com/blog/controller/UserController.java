@@ -2,6 +2,7 @@ package com.blog.controller;
 
 import com.blog.dto.LoginRequest;
 import com.blog.dto.LoginResponse;
+import com.blog.exception.BusinessMsgEnum;
 import com.blog.pojo.User;
 import com.blog.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class UserController {
     // 登录
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
+
+        BusinessMsgEnum.USER_NOT_FOUND
+
         LoginResponse response = loginService.login(loginRequest);
         return ResponseEntity.ok(response);  // 返回成功的登录响应
     }

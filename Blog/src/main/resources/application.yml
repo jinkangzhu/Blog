@@ -7,3 +7,9 @@ spring:
 
 jwt:
   secretKey: suifeng
+  ttl: 1800000
+
+logging:
+  level:
+    root: debug
+    com.blog: debug

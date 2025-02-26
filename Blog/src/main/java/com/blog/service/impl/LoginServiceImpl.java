@@ -7,8 +7,6 @@ import com.blog.pojo.User;
 import com.blog.properties.JwtProperties;
 import com.blog.service.LoginService;
 import com.blog.utils.JwtUtil;
-import com.sun.xml.internal.bind.v2.TODO;
-import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,11 +35,6 @@ public class LoginServiceImpl implements LoginService {
         }
 
         //TODO 这里是密文存、密文校验，先不搞这个
-//        // 2. 验证密码
-//        if (!passwordEncoder.matches(loginRequest.getPassword(), user.getPassword())) {
-//            throw new RuntimeException("密码错误");
-//        }
-
         // 2. 验证密码
         if (!user.getPassword().equals(loginRequest.getPassword())) {
             throw new RuntimeException("密码错误");
@@ -54,7 +47,6 @@ public class LoginServiceImpl implements LoginService {
         LoginResponse response = new LoginResponse();
         response.setToken(token);
         response.setMessage("登录成功");
-
         return response;
     }
 
@@ -62,14 +54,10 @@ public class LoginServiceImpl implements LoginService {
     public void register(User user) {
         // 检查用户名是否已存在
         if (userMapper.findByUsername(user.getUsername()) != null) {
-            // throw new Exception("Username already exists.");
             throw new RuntimeException("用户名用过了，亲~");
         }
 
-//        // 加密用户密码
-//        String encodedPassword = passwordEncoder.encode(user.getPassword());
-//        user.setPassword(encodedPassword);
-
+        // TODO 加密用户密码
         user.setPassword(user.getPassword());
 
         // TODO 改成雪花算法
@@ -80,7 +68,7 @@ public class LoginServiceImpl implements LoginService {
         userMapper.insertUser(user);
     }
 
-    // 生成 Token（简化版，实际项目中使用 JWT）
+    // 生成 Token
     private String generateToken(User user) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("user", user);

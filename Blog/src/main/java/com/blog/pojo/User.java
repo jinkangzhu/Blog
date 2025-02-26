@@ -19,6 +19,4 @@ public class User {
     private String updateBy;
     private LocalDateTime updateDate;
     private String deleteFlag;
-
-    // Getters and Setters
 }

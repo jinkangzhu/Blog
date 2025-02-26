@@ -9,7 +9,6 @@ import com.blog.utils.JwtUtil;
 import com.blog.vo.RequestContextManager;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.*;

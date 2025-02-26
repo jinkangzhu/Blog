@@ -6,6 +6,5 @@ import lombok.Data;
 public class LoginResponse {
     private String token;
     private String message;
-
-    // Getters and Setters
+// TODO 返回给前端统一的Result
 }

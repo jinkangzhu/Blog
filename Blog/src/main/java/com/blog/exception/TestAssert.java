@@ -1,19 +1,18 @@
 package com.blog.exception;
 
-public class TestAssert implements CustomAssert{
+import java.text.MessageFormat;
 
-    private String errorCode;
-    private String message;
-    private String statusCode;
-
+public interface TestAssert extends CustomAssert,BaseMethod{
 
     @Override
-    public BusinessException newException() {
-        return new BusinessException();
+    public default BusinessException newException() {
+        String format = MessageFormat.format(this.getMessage(),null);
+        return new BusinessException(format);
     }
 
     @Override
-    public BusinessException newException(Throwable t) {
-        return new BusinessException(t);
+    public default BusinessException newException(Object... objects) {
+        String format = MessageFormat.format(this.getMessage(), objects);
+        return new BusinessException(format);
     }
 }

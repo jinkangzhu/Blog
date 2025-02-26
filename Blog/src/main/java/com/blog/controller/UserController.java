@@ -23,8 +23,6 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
 
-        BusinessMsgEnum.USER_NOT_FOUND
-
         LoginResponse response = loginService.login(loginRequest);
         return ResponseEntity.ok(response);  // 返回成功的登录响应
     }

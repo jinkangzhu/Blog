@@ -13,10 +13,10 @@ public interface CustomAssert{
     /**
      * 根据抛出异常类和ErrorCode创建新的异常
      *
-     * @param t
+     * @param message message
      * @return
      */
-    BusinessException newException(Throwable t);
+    BusinessException newException(Object... message);
 
     /**
      * 对象为空则抛出异常
@@ -33,11 +33,11 @@ public interface CustomAssert{
      * 对象为空则抛出异常
      *
      * @param object
-     * @param t
+     * @param message
      */
-    default void assertNotNull(Object object, Throwable t) {
+    default void assertNotNull(Object object, String message) {
         if (ObjectUtils.isEmpty(object)) {
-            throw newException(t);
+            throw newException(message);
         }
     }
 
@@ -56,11 +56,11 @@ public interface CustomAssert{
      * 对象不为空则抛出异常
      *
      * @param object
-     * @param t
+     * @param message
      */
-    default void assertNull(Object object, Throwable t) {
+    default void assertNull(Object object, String message) {
         if (!ObjectUtils.isEmpty(object)) {
-            throw newException(t);
+            throw newException(message);
         }
     }
 

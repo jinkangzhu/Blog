@@ -1,18 +1,20 @@
 package com.blog.mapper;
 
-import com.blog.pojo.User;
-import org.apache.ibatis.annotations.*;
 
-@Mapper
+import com.blog.entity.User;
+import java.util.List;
+
 public interface UserMapper {
 
-    @Select("SELECT * FROM tpl_user WHERE username = #{username}")
-    User findByUsername(@Param("username") String username);
+    User findById(String id);
 
-    @Insert("INSERT INTO tpl_user (id, username, password, email, phone, status, create_by, create_date, update_by, update_date, delete_flag) " +
-            "VALUES (#{id}, #{username}, #{password}, #{email}, #{phone}, #{status}, #{createBy}, #{createDate}, #{updateBy}, #{updateDate}, #{deleteFlag})")
-    void insertUser(User user);
+    List<User> findAll();
 
-    @Update("UPDATE tpl_user SET password = #{password}, update_by = #{updateBy}, update_date = #{updateDate} WHERE id = #{id}")
-    void updateUser(User user);
+    void insert(User user);
+
+    void update(User user);
+
+    void delete(String id);
+
+    User findByUsername(String username);
 }

@@ -29,7 +29,7 @@ public class JwtRequestFilter implements Filter {
 
         String requestURI = request.getRequestURI();
         // 判断请求路径是否是登录路径，假设 "/api/auth/login" 是登录路径
-        if (requestURI.contains("/api/auth/login")) {
+        if (requestURI.contains("/api/auth/login") || requestURI.contains("/api/auth/register")) {
             filterChain.doFilter(servletRequest, servletResponse);  // 如果是登录路径，直接放行
             return;
         }
@@ -43,7 +43,7 @@ public class JwtRequestFilter implements Filter {
             // 校验失败，返回401 Unauthorized 错误
             HttpServletResponse response = (HttpServletResponse) servletResponse;
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);  // 401
-            response.getWriter().write("Unauthorized - Invalid or Expired Token");
+            response.getWriter().write("登录过期~");
             return;
         }
         filterChain.doFilter(servletRequest, servletResponse);

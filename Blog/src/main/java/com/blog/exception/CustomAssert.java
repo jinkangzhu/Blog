@@ -64,4 +64,16 @@ public interface CustomAssert{
         }
     }
 
+    default void assertIsTrue(Boolean isTrue) {
+        if (isTrue) {
+            BusinessException exception = newException();
+            throw exception;
+        }
+    }
+    default void assertIsFalse(Boolean isFalse) {
+        if (!isFalse) {
+            throw newException();
+        }
+    }
+
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blog.mapper.ConfigLookupMapper">
+
+    <!-- 根据ID查询配置项 -->
+    <select id="findById" resultType="com.blog.entity.ConfigLookup">
+        SELECT * FROM config_lookup WHERE id = #{id} AND deleted_flag = 'N'
+    </select>
+
+    <!-- 查询所有配置项 -->
+    <select id="findAll" resultType="com.blog.entity.ConfigLookup">
+        SELECT * FROM config_lookup AND deleted_flag = 'N'
+    </select>
+
+    <!-- 插入配置项 -->
+    <insert id="insert">
+        INSERT INTO config_lookup (id, config_key, config_value, group_code, description, created_by, updated_by, status, created_date, updated_date, deleted_flag, item_attr1, item_attr2, item_attr3, item_attr4, item_attr5, item_attr6)
+        VALUES (#{id}, #{configKey}, #{configValue}, #{groupCode}, #{description}, #{createdBy}, #{updatedBy}, #{status}, #{createdDate}, #{updatedDate}, #{deletedFlag}, #{itemAttr1}, #{itemAttr2}, #{itemAttr3}, #{itemAttr4}, #{itemAttr5}, #{itemAttr6})
+    </insert>
+
+    <!-- 更新配置项 -->
+    <update id="update">
+        UPDATE config_lookup
+        SET config_key = #{configKey},
+            config_value = #{configValue},
+            group_code = #{groupCode},
+            description = #{description},
+            created_by = #{createdBy},
+            updated_by = #{updatedBy},
+            status = #{status},
+            created_date = #{createdDate},
+            updated_date = #{updatedDate},
+            deleted_flag = #{deletedFlag},
+            item_attr1 = #{itemAttr1},
+            item_attr2 = #{itemAttr2},
+            item_attr3 = #{itemAttr3},
+            item_attr4 = #{itemAttr4},
+            item_attr5 = #{itemAttr5},
+            item_attr6 = #{itemAttr6}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 删除配置项 -->
+    <delete id="delete">
+        DELETE FROM config_lookup WHERE id = #{id}
+    </delete>
+</mapper>

@@ -14,6 +14,21 @@ public class ResponseResult<T> implements Serializable {
     public static <T> ResponseResult<T> success() {
         ResponseResult<T> responseResult = new ResponseResult<T>();
         responseResult.statusCode = "200";
+        responseResult.message = "success";
+        return responseResult;
+    }
+
+    public static <T> ResponseResult<T> success(String message) {
+        ResponseResult<T> responseResult = new ResponseResult<T>();
+        responseResult.statusCode = "200";
+        responseResult.message = message;
+        return responseResult;
+    }
+    public static <T> ResponseResult<T> success(T data) {
+        ResponseResult<T> responseResult = new ResponseResult<T>();
+        responseResult.statusCode = "200";
+        responseResult.message = "success";
+        responseResult.data = data;
         return responseResult;
     }
 

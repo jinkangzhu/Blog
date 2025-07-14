@@ -17,7 +17,7 @@
 
     <!-- 查询所有用户 -->
     <select id="findAll" resultType="com.blog.entity.User">
-        SELECT * FROM def_user AND deleted_flag = 'N'
+        SELECT * FROM def_user WHERE deleted_flag = 'N'
     </select>
 
     <!-- 插入用户 -->
@@ -29,16 +29,18 @@
     <!-- 更新用户 -->
     <update id="update">
         UPDATE def_user
-        SET username = #{username},
-            password = #{password},
-            email = #{email},
-            phone = #{phone},
-            status = #{status},
-            created_by = #{createdBy},
-            created_date = #{createdDate},
-            updated_by = #{updatedBy},
-            updated_date = #{updatedDate},
-            deleted_flag = #{deletedFlag}
+        <set>
+            <if test="username != null">username = #{username},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createdBy != null">created_by = #{createdBy},</if>
+            <if test="createdDate != null">created_date = #{createdDate},</if>
+            <if test="updatedBy != null">updated_by = #{updatedBy},</if>
+            <if test="updatedDate != null">updated_date = #{updatedDate},</if>
+            <if test="deletedFlag != null">deleted_flag = #{deletedFlag},</if>
+        </set>
         WHERE id = #{id}
     </update>
 

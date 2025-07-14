@@ -6,7 +6,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public abstract class ObjectEntity {
+public abstract class BaseEntity {
     private String createdBy;
     private LocalDateTime createdDate;
     private String updatedBy;

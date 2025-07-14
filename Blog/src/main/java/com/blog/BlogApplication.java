@@ -11,24 +11,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BlogApplication {
 
     public static void main(String[] args) {
-
-
-//        throw new BusinessException(BusinessMsgEnum.USER_NOT_FOUND);
-
-//
         SpringApplication.run(BlogApplication.class, args);
         System.out.println("(*^▽^*) blog启动成功！");
-
-
-
-//        try {
-//            String id = null;
-//
-//        } catch (Exception e) {
-//            log.error("dawdwad:{}",e.getMessage());
-//            BusinessMsgEnum.SYSTEM_ERROR.assertNull(e, e.getMessage());
-//        }
-//
     }
 
 }

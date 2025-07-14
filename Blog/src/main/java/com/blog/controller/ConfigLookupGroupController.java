@@ -1,14 +1,18 @@
 package com.blog.controller;
 
 import com.blog.entity.ConfigLookupGroup;
+import com.blog.exception.BusinessMsgEnum;
+import com.blog.exception.PageResult;
+import com.blog.exception.ResponseResult;
 import com.blog.service.ConfigLookupGroupService;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/configLookupGroup")
+@RequestMapping("/api/configLookupGroup")
 public class ConfigLookupGroupController {
 
     @Autowired
@@ -18,42 +22,58 @@ public class ConfigLookupGroupController {
      * 根据ID查询配置分组
      */
     @GetMapping("/{id}")
-    public ConfigLookupGroup findById(@PathVariable String id) {
-        return configLookupGroupService.findById(id);
+    public ResponseResult<ConfigLookupGroup> findById(@PathVariable String id) {
+        return ResponseResult.success(configLookupGroupService.findById(id));
     }
 
     /**
      * 查询所有配置分组
      */
     @GetMapping("/list")
-    public List<ConfigLookupGroup> findAll() {
-        return configLookupGroupService.findAll();
+    public ResponseResult<List<ConfigLookupGroup>> findAll() {
+        List<ConfigLookupGroup> configLookupGroups = configLookupGroupService.findAll();
+        return ResponseResult.success(configLookupGroups);
+
+    }
+
+    /**
+     * 分页查询
+     */
+    @GetMapping("/list/page")
+    public ResponseResult<PageResult<ConfigLookupGroup>> findAll( @RequestParam(required = false) Integer pageNum,
+                                                                  @RequestParam(required = false) Integer pageSize) {
+        BusinessMsgEnum.ILLEGAL_ARGUMENT.assertNotNull(pageNum, "ConfigLookupGroup pageNum");
+        BusinessMsgEnum.ILLEGAL_ARGUMENT.assertNotNull(pageSize, "ConfigLookupGroup pageSize");
+        PageInfo<ConfigLookupGroup> pageInfo = configLookupGroupService.findAll(pageNum, pageSize);
+        PageResult<ConfigLookupGroup> pageResult = new PageResult<>(pageNum,pageSize,pageInfo.getTotal(),pageInfo.getList());
+        return ResponseResult.success(pageResult);
+
     }
 
     /**
      * 插入配置分组
      */
     @PostMapping("/insert")
-    public String insert(@RequestBody ConfigLookupGroup configLookupGroup) {
+    public ResponseResult<String> insert(@RequestBody ConfigLookupGroup configLookupGroup) {
         configLookupGroupService.insert(configLookupGroup);
-        return "插入成功";
+        return ResponseResult.success();
     }
 
     /**
      * 更新配置分组
      */
     @PostMapping("/update")
-    public String update(@RequestBody ConfigLookupGroup configLookupGroup) {
+    public ResponseResult<Object> update(@RequestBody ConfigLookupGroup configLookupGroup) {
         configLookupGroupService.update(configLookupGroup);
-        return "更新成功";
+        return ResponseResult.success();
     }
 
     /**
      * 删除配置分组
      */
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable String id) {
+    public ResponseResult<Object> delete(@PathVariable String id) {
         configLookupGroupService.delete(id);
-        return "删除成功";
+        return ResponseResult.success();
     }
 }

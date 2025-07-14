@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
  * 配置分组表实体类
  */
 @Data
-public class ConfigLookupGroup extends ObjectEntity{
+public class ConfigLookupGroup extends BaseEntity{
 
     private String id; // 主键ID
 

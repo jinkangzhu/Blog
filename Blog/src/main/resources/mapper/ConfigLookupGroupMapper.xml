@@ -7,7 +7,19 @@
 
     <!-- 根据ID查询 -->
     <select id="findById" resultType="com.blog.entity.ConfigLookupGroup">
-        SELECT * FROM config_lookup_group WHERE id = #{id} AND deleted_flag = '0'
+        SELECT
+            id,
+            group_code AS groupCode,
+            group_name AS groupName,
+            description,
+            status,
+            created_by AS createdBy,
+            created_date AS createdDate,
+            updated_by AS updatedBy,
+            updated_date AS updatedDate,
+            deleted_flag AS deletedFlag
+        FROM config_lookup_group
+        WHERE id = #{id} AND deleted_flag = 'N'
     </select>
 
     <!-- 插入记录 -->
@@ -19,15 +31,17 @@
     <!-- 更新记录 -->
     <update id="update">
         UPDATE config_lookup_group
-        SET group_code = #{groupCode},
-            group_name = #{groupName},
-            description = #{description},
-            status = #{status},
-            created_by = #{createdBy},
-            updated_by = #{updatedBy},
-            created_date = #{createdDate},
-            updated_date = #{updatedDate},
-            deleted_flag = #{deletedFlag}
+        <set>
+            <if test="groupCode != null">group_code = #{groupCode},</if>
+            <if test="groupName != null">group_name = #{groupName},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createdBy != null">created_by = #{createdBy},</if>
+            <if test="updatedBy != null">updated_by = #{updatedBy},</if>
+            <if test="createdDate != null">created_date = #{createdDate},</if>
+            <if test="updatedDate != null">updated_date = #{updatedDate},</if>
+            <if test="deletedFlag != null">deleted_flag = #{deletedFlag},</if>
+        </set>
         WHERE id = #{id}
     </update>
 
@@ -38,6 +52,18 @@
 
     <!-- 查询所有记录 -->
     <select id="findAll" resultType="com.blog.entity.ConfigLookupGroup">
-        SELECT * FROM config_lookup_group AND deleted_flag = '0'
+        SELECT
+            id,
+            group_code AS groupCode,
+            group_name AS groupName,
+            description,
+            status,
+            created_by AS createdBy,
+            created_date AS createdDate,
+            updated_by AS updatedBy,
+            updated_date AS updatedDate,
+            deleted_flag AS deletedFlag
+        FROM config_lookup_group
+        WHERE deleted_flag = 'N'
     </select>
 </mapper>

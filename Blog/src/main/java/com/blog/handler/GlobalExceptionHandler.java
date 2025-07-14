@@ -39,17 +39,9 @@ public class GlobalExceptionHandler {
         return ResponseResult.error("500", "RuntimeException", e.getMessage());
     }
 
-    @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
-    public ResponseResult exceptionHandler(SQLIntegrityConstraintViolationException ex){
-//        String message = ex.getMessage();
-//        if (message.contains("Duplicate entry")){
-//            String[] split = message.split(" ");
-//            String username = split[2];
-//            String msg = split[2] + MessageConstant.ALREADY_EXITS;
-//            return Result.error(msg);
-//        }else {
-//            return Result.error(MessageConstant.UNKNOWN_ERROR);
-//        }
-        return ResponseResult.error("500", "数据库异常", ex.getMessage());
+    @ExceptionHandler
+    public ResponseResult exceptionHandler(SQLIntegrityConstraintViolationException e){
+        log.error("数据库异常：{}", e);
+        return ResponseResult.error("500", "数据库异常", e.getMessage());
     }
 }

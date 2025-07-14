@@ -4,7 +4,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class ConfigLookup extends ObjectEntity{
+public class ConfigLookup extends BaseEntity{
 
     private String id; // 主键ID
 
@@ -15,6 +15,8 @@ public class ConfigLookup extends ObjectEntity{
     private String groupCode; // 配置分组
 
     private String description; // 配置描述
+
+    private String status; //状态 是否可用1可用
 
     private String itemAttr1; // 扩展字段1
 

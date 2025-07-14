@@ -14,7 +14,11 @@ spring:
 mybatis:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.blog.entity
-
+pagehelper:
+  helperDialect: mysql
+  reasonable: true      # 分页合理化
+  supportMethodsArguments: true
+  returnPageInfo: check
 jwt:
   secretKey: suifeng
   ttl: 1800000
@@ -23,3 +27,4 @@ logging:
   level:
     root: info
     com.blog: info
+    com.blog.mapper: info

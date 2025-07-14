@@ -8,6 +8,7 @@ import com.blog.entity.User;
 import com.blog.properties.JwtProperties;
 import com.blog.service.UserLoginService;
 import com.blog.utils.JwtUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import java.util.UUID;
 
 
 @Service
+@Slf4j
 public class UserLoginServiceImpl implements UserLoginService {
 
     @Autowired
@@ -28,23 +30,14 @@ public class UserLoginServiceImpl implements UserLoginService {
 
     @Override
     public LoginResponse login(LoginRequest loginRequest) {
-        // 1. 查找用户
         User user = userMapper.findByUsername(loginRequest.getUsername());
-        if (user == null) {
-            // TODO 全局异常处理器、异常类、返回统一类
-            throw new RuntimeException("用户名不存在");
-        }
+        BusinessMsgEnum.USER_NOT_FOUND.assertNotNull(user);
 
         //TODO 这里是密文存、密文校验，先不搞这个
-        // 2. 验证密码
-        if (!user.getPassword().equals(loginRequest.getPassword())) {
-            throw new RuntimeException("密码错误");
-        }
+        BusinessMsgEnum.ERROR_PASSWORD.assertIsTrue(user.getPassword().equals(loginRequest.getPassword()));
 
-        // 3. 生成 token
         String token = generateToken(user);
 
-        // 4. 返回登录响应
         LoginResponse response = new LoginResponse();
         response.setToken(token);
         return response;
@@ -52,7 +45,6 @@ public class UserLoginServiceImpl implements UserLoginService {
 
 
     public void register(User user) {
-        // 检查用户名是否已存在
         BusinessMsgEnum.USER_DUPLICATE.assertNull(userMapper.findByUsername(user.getUsername()));
 
         // TODO 加密用户密码
@@ -62,7 +54,6 @@ public class UserLoginServiceImpl implements UserLoginService {
         String uuid = UUID.randomUUID().toString();
         user.setId(uuid);
         user.setCreateUserInfo(uuid);
-
 
         // 保存用户到数据库
         userMapper.insert(user);

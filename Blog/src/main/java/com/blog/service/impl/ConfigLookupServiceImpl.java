@@ -1,8 +1,12 @@
 package com.blog.service.impl;
 
+import cn.hutool.core.lang.UUID;
 import com.blog.entity.ConfigLookup;
+import com.blog.entity.ConfigLookupGroup;
 import com.blog.mapper.ConfigLookupMapper;
 import com.blog.service.ConfigLookupService;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
@@ -25,17 +29,22 @@ public class ConfigLookupServiceImpl implements ConfigLookupService {
     }
 
     @Override
+    public PageInfo<ConfigLookup> findAll(Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<ConfigLookup> configLookups = configLookupMapper.findAll();
+        return new PageInfo<>(configLookups);
+    }
+
+    @Override
     public void insert(ConfigLookup configLookup) {
-        // 设置默认值
-        configLookup.setCreatedDate(LocalDateTime.now());
-        configLookup.setUpdatedDate(LocalDateTime.now());
+        configLookup.setCreateInfo();
+        configLookup.setId(UUID.randomUUID().toString());
         configLookupMapper.insert(configLookup);
     }
 
     @Override
     public void update(ConfigLookup configLookup) {
-        // 设置更新时间
-        configLookup.setUpdatedDate(LocalDateTime.now());
+        configLookup.setUpdateInfo();
         configLookupMapper.update(configLookup);
     }
 

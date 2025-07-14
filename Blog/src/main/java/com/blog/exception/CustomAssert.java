@@ -64,14 +64,22 @@ public interface CustomAssert{
         }
     }
 
-    default void assertIsTrue(Boolean isTrue) {
-        if (isTrue) {
-            BusinessException exception = newException();
-            throw exception;
+    /**
+     * 为 false 则抛异常
+     * @param bool
+     */
+    default void assertIsTrue(Boolean bool) {
+        if (!bool) {
+            throw newException();
         }
     }
-    default void assertIsFalse(Boolean isFalse) {
-        if (!isFalse) {
+
+    /**
+     * 为 true 则抛异常
+     * @param bool
+     */
+    default void assertIsFalse(Boolean bool) {
+        if (bool) {
             throw newException();
         }
     }

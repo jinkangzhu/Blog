@@ -1,7 +1,9 @@
 package com.blog.controller;
 
+import com.blog.converter.UserDTOToUserConverter;
 import com.blog.dto.LoginRequest;
 import com.blog.dto.LoginResponse;
+import com.blog.exception.BusinessMsgEnum;
 import com.blog.exception.ResponseResult;
 import com.blog.entity.User;
 import com.blog.service.UserLoginService;
@@ -27,7 +29,7 @@ public class UserLoginController {
      */
     @PostMapping("/login")
     public ResponseResult<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
-
+        User user = UserDTOToUserConverter.INSTANCE.convert(loginRequest);
         LoginResponse response = userLoginService.login(loginRequest);
         return ResponseResult.success("登录成功！", response);  // 返回成功的登录响应
     }
@@ -42,7 +44,7 @@ public class UserLoginController {
         try {
             // 注册用户并返回结果
             userLoginService.register(user);
-            return ResponseResult.success("恭喜你，注册成功！", "");
+            return ResponseResult.success("恭喜你，注册成功！");
         } catch (Exception e) {
             return ResponseResult.error("500", "LoginFailed", "注册失败：" + e.getMessage());
         }

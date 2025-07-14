@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 
 @Data
-public class User extends ObjectEntity{
+public class User extends BaseEntity{
     private String id;
     private String username;
     private String password;

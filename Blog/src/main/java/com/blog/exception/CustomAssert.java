@@ -64,4 +64,24 @@ public interface CustomAssert{
         }
     }
 
+    /**
+     * 为 false 则抛异常
+     * @param bool
+     */
+    default void assertIsTrue(Boolean bool) {
+        if (!bool) {
+            throw newException();
+        }
+    }
+
+    /**
+     * 为 true 则抛异常
+     * @param bool
+     */
+    default void assertIsFalse(Boolean bool) {
+        if (bool) {
+            throw newException();
+        }
+    }
+
 }

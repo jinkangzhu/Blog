@@ -4,12 +4,27 @@ spring:
     url: jdbc:mysql://8.134.114.118:3306/boke?useSSL=false&serverTimezone=UTC
     username: root
     password: suifeng1234
+  mvc:
+    contentnegotiation:
+      favor-parameter: true
+      parameter-name: mediaType
+    converters:
+      preferred-json-mapper: jackson
 
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.blog.entity
+pagehelper:
+  helperDialect: mysql
+  reasonable: true      # 分页合理化
+  supportMethodsArguments: true
+  returnPageInfo: check
 jwt:
   secretKey: suifeng
   ttl: 1800000
 
 logging:
   level:
-    root: debug
-    com.blog: debug
+    root: info
+    com.blog: info
+    com.blog.mapper: info

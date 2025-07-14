@@ -1,12 +1,18 @@
 package com.blog.exception;
 
-public enum BusinessMsgEnum implements TestAssert{
+public enum BusinessMsgEnum implements ExceptionAssert{
 
     // 定义不同的错误类型
     INVALID_USERNAME("401", "User.Login.001", "用户名不能为空"),
     INVALID_PASSWORD("401", "User.Login.002", "密码不能为空:{0}"),
     USER_NOT_FOUND("401", "User.Login.003", "用户未找到"),
-    SYSTEM_ERROR("401", "System.001", "系统异常:{0}");
+    ERROR_PASSWORD("401","User.Login.004","密码错误"),
+    NOT_LOGIN("401","User.Login.005","用户未登录"),
+    SYSTEM_ERROR("401", "System.001", "系统异常:{0}"),
+    USER_DUPLICATE("500","User.Register.001","用户名重复！"),
+
+    ILLEGAL_ARGUMENT("300","Argument.001","参数为空{0}");
+
 
     private String statusCode;
     private String errorCode;

@@ -1,53 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.blog.mapper.UserMapper">
 
-
-    <insert id="insertBatch">
-        insert into dish_flavor (dish_id, name, value) values
-        <foreach collection="flavors" item="df" separator=",">
-            (#{df.dishId},#{df.name},#{df.value})
-        </foreach>
-
-    </insert>
-
-    <delete id="deleteByDishIds">
-        delete from dish_flavor where dish_id in
-        <foreach collection="dishIds" item="dishId" separator="," open="(" close=")">
-            #{dishId}
-        </foreach>
-    </delete>
-
-    <select id="pageQuery" resultType="com.sky.vo.DishVO">
-        select d.* , c.name as categoryName from dish d left outer join category c on d.category_id = c.id
-        <where>
-            <if test="name != null">
-                d.name like concat('%',#{name},'%')
-            </if>
-            <if test="categoryId != null">
-                and d.category_id = #{categoryId}
-            </if>
-            <if test="status != null">
-                and d.status = #{status}
-            </if>
-        </where>
-        order by d.create_time desc
+    <!-- 根据ID查询用户 -->
+    <select id="findById" resultType="com.blog.entity.User">
+        SELECT * FROM def_user WHERE id = #{id} AND deleted_flag = 'N'
     </select>
 
+    <!-- 根据username查询用户 -->
+    <select id="findByUsername" resultType="com.blog.entity.User">
+     SELECT * FROM def_user WHERE username = #{username} AND deleted_flag = 'N'
+    </select>
+
+    <!-- 查询所有用户 -->
+    <select id="findAll" resultType="com.blog.entity.User">
+        SELECT * FROM def_user WHERE deleted_flag = 'N'
+    </select>
+
+    <!-- 插入用户 -->
+    <insert id="insert">
+        INSERT INTO def_user (id, username, password, email, phone, status, created_by, created_date, updated_by, updated_date, deleted_flag)
+        VALUES (#{id}, #{username}, #{password}, #{email}, #{phone}, #{status}, #{createdBy}, #{createdDate}, #{updatedBy}, #{updatedDate}, #{deletedFlag})
+    </insert>
+
+    <!-- 更新用户 -->
     <update id="update">
-        update dish
+        UPDATE def_user
         <set>
-            <if test="name != null">name = #{name},</if>
-            <if test="categoryId != null">category_id = #{categoryId},</if>
-            <if test="price != null">price = #{price},</if>
-            <if test="image != null">image = #{image},</if>
-            <if test="description != null">description = #{description},</if>
+            <if test="username != null">username = #{username},</if>
+            <if test="password != null">password = #{password},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="phone != null">phone = #{phone},</if>
             <if test="status != null">status = #{status},</if>
-            <if test="updateTime != null">update_time = #{updateTime},</if>
-            <if test="updateUser != null">update_user = #{updateUser},</if>
+            <if test="createdBy != null">created_by = #{createdBy},</if>
+            <if test="createdDate != null">created_date = #{createdDate},</if>
+            <if test="updatedBy != null">updated_by = #{updatedBy},</if>
+            <if test="updatedDate != null">updated_date = #{updatedDate},</if>
+            <if test="deletedFlag != null">deleted_flag = #{deletedFlag},</if>
         </set>
-        where id = #{id}
+        WHERE id = #{id}
     </update>
 
+    <!-- 删除用户 -->
+    <delete id="delete">
+        DELETE FROM def_user WHERE id = #{id}
+    </delete>
 </mapper>

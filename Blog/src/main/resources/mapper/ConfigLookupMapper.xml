@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blog.mapper.ConfigLookupMapper">
+
+    <!-- 根据ID查询配置项 -->
+    <select id="findById" resultType="com.blog.entity.ConfigLookup">
+        SELECT
+            id,
+            config_key AS configKey,
+            config_value AS configValue,
+            group_code AS groupCode,
+            description,
+            status,
+            item_attr1 AS itemAttr1,
+            item_attr2 AS itemAttr2,
+            item_attr3 AS itemAttr3,
+            item_attr4 AS itemAttr4,
+            item_attr5 AS itemAttr5,
+            item_attr6 AS itemAttr6,
+            created_by AS createdBy,
+            created_date AS createdDate,
+            updated_by AS updatedBy,
+            updated_date AS updatedDate,
+            deleted_flag AS deletedFlag
+        FROM config_lookup
+        WHERE id = #{id} AND deleted_flag = 'N'
+    </select>
+
+    <!-- 查询所有配置项 -->
+    <select id="findAll" resultType="com.blog.entity.ConfigLookup">
+        SELECT
+            id,
+            config_key AS configKey,
+            config_value AS configValue,
+            group_code AS groupCode,
+            description,
+            status,
+            item_attr1 AS itemAttr1,
+            item_attr2 AS itemAttr2,
+            item_attr3 AS itemAttr3,
+            item_attr4 AS itemAttr4,
+            item_attr5 AS itemAttr5,
+            item_attr6 AS itemAttr6,
+            created_by AS createdBy,
+            created_date AS createdDate,
+            updated_by AS updatedBy,
+            updated_date AS updatedDate,
+            deleted_flag AS deletedFlag
+        FROM config_lookup
+        WHERE deleted_flag = 'N'
+    </select>
+
+    <!-- 插入配置项 -->
+    <insert id="insert">
+        INSERT INTO config_lookup (id, config_key, config_value, group_code, description, created_by, updated_by, status, created_date, updated_date, deleted_flag, item_attr1, item_attr2, item_attr3, item_attr4, item_attr5, item_attr6)
+        VALUES (#{id}, #{configKey}, #{configValue}, #{groupCode}, #{description}, #{createdBy}, #{updatedBy}, #{status}, #{createdDate}, #{updatedDate}, #{deletedFlag}, #{itemAttr1}, #{itemAttr2}, #{itemAttr3}, #{itemAttr4}, #{itemAttr5}, #{itemAttr6})
+    </insert>
+
+    <!-- 更新配置项 -->
+    <update id="update">
+        UPDATE config_lookup
+        <set>
+            <if test="configKey != null">config_key = #{configKey},</if>
+            <if test="configValue != null">config_value = #{configValue},</if>
+            <if test="groupCode != null">group_code = #{groupCode},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="createdBy != null">created_by = #{createdBy},</if>
+            <if test="updatedBy != null">updated_by = #{updatedBy},</if>
+            <if test="status != null">status = #{status},</if>
+            <if test="createdDate != null">created_date = #{createdDate},</if>
+            <if test="updatedDate != null">updated_date = #{updatedDate},</if>
+            <if test="deletedFlag != null">deleted_flag = #{deletedFlag},</if>
+            <if test="itemAttr1 != null">item_attr1 = #{itemAttr1},</if>
+            <if test="itemAttr2 != null">item_attr2 = #{itemAttr2},</if>
+            <if test="itemAttr3 != null">item_attr3 = #{itemAttr3},</if>
+            <if test="itemAttr4 != null">item_attr4 = #{itemAttr4},</if>
+            <if test="itemAttr5 != null">item_attr5 = #{itemAttr5},</if>
+            <if test="itemAttr6 != null">item_attr6 = #{itemAttr6},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 删除配置项 -->
+    <delete id="delete">
+        DELETE FROM config_lookup WHERE id = #{id}
+    </delete>
+</mapper>

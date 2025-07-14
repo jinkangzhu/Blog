@@ -2,9 +2,9 @@ package com.blog.service;
 
 import com.blog.dto.LoginRequest;
 import com.blog.dto.LoginResponse;
-import com.blog.pojo.User;
+import com.blog.entity.User;
 
-public interface LoginService {
+public interface UserLoginService {
     LoginResponse login(LoginRequest loginRequest);
 
     void register(User user);

@@ -1,6 +1,7 @@
 package com.blog.service.impl;
 
 import cn.hutool.core.lang.UUID;
+import cn.hutool.core.lang.generator.SnowflakeGenerator;
 import com.blog.entity.ConfigLookup;
 import com.blog.entity.ConfigLookupGroup;
 import com.blog.mapper.ConfigLookupMapper;
@@ -51,5 +52,15 @@ public class ConfigLookupServiceImpl implements ConfigLookupService {
     @Override
     public void delete(String id) {
         configLookupMapper.delete(id);
+    }
+
+    @Override
+    public List<ConfigLookup> queryLookupItemList(String groupCode) {
+        return configLookupMapper.queryLookupItems(groupCode);
+    }
+
+    @Override
+    public ConfigLookup queryLookupItem(String groupCode, String itemCode) {
+        return configLookupMapper.queryLookupItem(groupCode,itemCode);
     }
 }

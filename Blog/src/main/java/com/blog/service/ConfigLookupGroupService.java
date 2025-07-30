@@ -1,5 +1,6 @@
 package com.blog.service;
 
+import com.blog.entity.ConfigLookup;
 import com.blog.entity.ConfigLookupGroup;
 import com.github.pagehelper.PageInfo;
 

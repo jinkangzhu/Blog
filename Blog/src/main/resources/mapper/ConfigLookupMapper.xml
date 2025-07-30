@@ -5,6 +5,26 @@
 
 <mapper namespace="com.blog.mapper.ConfigLookupMapper">
 
+    <resultMap id="ConfigLookupResultMap" type="com.blog.entity.ConfigLookup">
+        <id property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="configKey" column="config_key" jdbcType="VARCHAR"/>
+        <result property="configValue" column="config_value" jdbcType="VARCHAR"/>
+        <result property="groupCode" column="group_code" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="itemAttr1" column="item_attr1" jdbcType="VARCHAR"/>
+        <result property="itemAttr2" column="item_attr2" jdbcType="VARCHAR"/>
+        <result property="itemAttr3" column="item_attr3" jdbcType="VARCHAR"/>
+        <result property="itemAttr4" column="item_attr4" jdbcType="VARCHAR"/>
+        <result property="itemAttr5" column="item_attr5" jdbcType="VARCHAR"/>
+        <result property="itemAttr6" column="item_attr6" jdbcType="VARCHAR"/>
+        <result property="createdBy" column="created_by" jdbcType="VARCHAR"/>
+        <result property="createdDate" column="created_date" jdbcType="TIMESTAMP"/>
+        <result property="updatedBy" column="updated_by" jdbcType="VARCHAR"/>
+        <result property="updatedDate" column="updated_date" jdbcType="TIMESTAMP"/>
+        <result property="deletedFlag" column="deleted_flag" jdbcType="VARCHAR"/>
+    </resultMap>
+
     <!-- 根据ID查询配置项 -->
     <select id="findById" resultType="com.blog.entity.ConfigLookup">
         SELECT
@@ -87,4 +107,17 @@
     <delete id="delete">
         DELETE FROM config_lookup WHERE id = #{id}
     </delete>
+
+    <select id="queryLookupItem" resultMap="ConfigLookupResultMap">
+        select item.config_key,item.config_value,item.group_code,item.description,item.item_attr1
+             ,item.item_attr2,item.item_attr3,item.item_attr4,item.item_attr5,item.item_attr6
+        from  config_lookup item
+        where item.group_code = #{groupCode} and item.config_key=#{itemCode} and item.status = '1' and item.deleted_flag='N';
+    </select>
+    <select id="queryLookupItems" resultMap="ConfigLookupResultMap">
+        select item.config_key,item.config_value,item.group_code,item.description,item.item_attr1
+             ,item.item_attr2,item.item_attr3,item.item_attr4,item.item_attr5,item.item_attr6
+        from  config_lookup item
+        where item.group_code = #{groupCode} and item.status = '1' and item.deleted_flag='N'
+    </select>
 </mapper>

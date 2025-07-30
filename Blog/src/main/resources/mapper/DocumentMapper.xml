@@ -29,6 +29,18 @@
                      #{createdBy}, #{updatedBy}, #{createdDate}, #{updatedDate}, #{deletedFlag}
                  )
     </insert>
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO def_document (
+        id, docName, docSize, docType,
+        created_by, updated_by, created_date, updated_date, deleted_flag
+        ) VALUES
+        <foreach collection="documents" item="item" separator=",">
+            (
+            #{item.id}, #{item.docName}, #{item.docSize}, #{item.docType},
+            #{item.createdBy}, #{item.updatedBy}, #{item.createdDate}, #{item.updatedDate}, #{item.deletedFlag}
+            )
+        </foreach>
+    </insert>
 
     <delete id="deleteById" parameterType="java.lang.String">
         DELETE FROM def_document WHERE id = #{id}

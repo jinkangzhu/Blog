@@ -30,6 +30,11 @@ public class DocumentImpl implements DocumentService {
     }
 
     @Override
+    public int batchInsert(List<Document> documents) {
+        return documentMapper.batchInsert(documents);
+    }
+
+    @Override
     @Transactional
     public int deleteById(String id) {
         return documentMapper.deleteById(id);

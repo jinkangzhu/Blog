@@ -18,4 +18,8 @@ public interface ConfigLookupService {
     void update(ConfigLookup configLookup);
 
     void delete(String id);
+
+    List<ConfigLookup> queryLookupItemList(String groupCode);
+
+    ConfigLookup queryLookupItem(String groupCode,String itemCode);
 }

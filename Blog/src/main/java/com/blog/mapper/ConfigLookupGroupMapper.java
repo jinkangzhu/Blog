@@ -2,8 +2,10 @@ package com.blog.mapper;
 
 
 
+import com.blog.entity.ConfigLookup;
 import com.blog.entity.ConfigLookupGroup;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 

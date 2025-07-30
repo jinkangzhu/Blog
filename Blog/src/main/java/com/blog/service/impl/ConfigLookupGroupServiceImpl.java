@@ -1,6 +1,7 @@
 package com.blog.service.impl;
 
 import cn.hutool.core.lang.UUID;
+import com.blog.entity.ConfigLookup;
 import com.blog.entity.ConfigLookupGroup;
 import com.blog.exception.PageResult;
 import com.blog.mapper.ConfigLookupGroupMapper;

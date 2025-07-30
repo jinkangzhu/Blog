@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blog.mapper.DocumentMapper">
+    <resultMap id="BaseResultMap" type="com.blog.entity.Document">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="docName" property="docName" jdbcType="VARCHAR"/>
+        <result column="docSize" property="docSize" jdbcType="BIGINT"/>
+        <result column="docType" property="docType" jdbcType="VARCHAR"/>
+        <result column="created_by" property="createdBy" jdbcType="VARCHAR"/>
+        <result column="updated_by" property="updatedBy" jdbcType="VARCHAR"/>
+        <result column="created_date" property="createdDate" jdbcType="TIMESTAMP"/>
+        <result column="updated_date" property="updatedDate" jdbcType="TIMESTAMP"/>
+        <result column="deleted_flag" property="deletedFlag" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, docName, docSize, docType, created_by, updated_by, created_date, updated_date, deleted_flag
+    </sql>
+
+    <insert id="insert" parameterType="com.blog.entity.Document">
+        INSERT INTO def_document (
+            id, docName, docSize, docType,
+            created_by, updated_by, created_date, updated_date, deleted_flag
+        ) VALUES (
+                     #{id}, #{docName}, #{docSize}, #{docType},
+                     #{createdBy}, #{updatedBy}, #{createdDate}, #{updatedDate}, #{deletedFlag}
+                 )
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.String">
+        DELETE FROM def_document WHERE id = #{id}
+    </delete>
+
+    <update id="updateById" parameterType="com.blog.entity.Document">
+        UPDATE def_document
+        <set>
+            <if test="docName != null">docName = #{docName},</if>
+            <if test="docSize != null">docSize = #{docSize},</if>
+            <if test="docType != null">docType = #{docType},</if>
+            <if test="createdBy != null">created_by = #{createdBy},</if>
+            <if test="updatedBy != null">updated_by = #{updatedBy},</if>
+            <if test="createdDate != null">created_date = #{createdDate},</if>
+            <if test="updatedDate != null">updated_date = #{updatedDate},</if>
+            <if test="deletedFlag != null">deleted_flag = #{deletedFlag},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.String">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM def_document
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM def_document
+    </select>
+
+    <!-- 条件查询 -->
+    <select id="selectByCondition" resultMap="BaseResultMap" parameterType="com.blog.entity.Document">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM def_document
+        <where>
+            <if test="id != null">AND id = #{id}</if>
+            <if test="docName != null">AND docName LIKE CONCAT('%', #{docName}, '%')</if>
+            <if test="docSize != null">AND docSize = #{docSize}</if>
+            <if test="docType != null">AND docType = #{docType}</if>
+            <if test="createdBy != null">AND created_by = #{createdBy}</if>
+            <if test="updatedBy != null">AND updated_by = #{updatedBy}</if>
+            <if test="createdDate != null">AND created_date = #{createdDate}</if>
+            <if test="updatedDate != null">AND updated_date = #{updatedDate}</if>
+            <if test="deletedFlag != null">AND deleted_flag = #{deletedFlag}</if>
+        </where>
+    </select>
+
+    <!-- 分页查询 -->
+    <select id="selectPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM def_document
+        LIMIT #{pageVO.offset}, #{pageVO.pageSize}
+    </select>
+
+    <!-- 带条件分页查询 -->
+    <select id="selectPageByCondition" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM def_document
+        <where>
+            <if test="condition.id != null">AND id = #{condition.id}</if>
+            <if test="condition.docName != null">AND docName LIKE CONCAT('%', #{condition.docName}, '%')</if>
+            <if test="condition.docSize != null">AND docSize = #{condition.docSize}</if>
+            <if test="condition.docType != null">AND docType = #{condition.docType}</if>
+            <if test="condition.createdBy != null">AND created_by = #{condition.createdBy}</if>
+            <if test="condition.updatedBy != null">AND updated_by = #{condition.updatedBy}</if>
+            <if test="condition.createdDate != null">AND created_date = #{condition.createdDate}</if>
+            <if test="condition.updatedDate != null">AND updated_date = #{condition.updatedDate}</if>
+            <if test="condition.deletedFlag != null">AND deleted_flag = #{condition.deletedFlag}</if>
+        </where>
+        LIMIT #{pageVO.offset}, #{pageVO.pageSize}
+    </select>
+
+    <!-- 统计所有记录数 -->
+    <select id="countAll" resultType="int">
+        SELECT COUNT(*) FROM def_document
+    </select>
+
+    <!-- 按条件统计记录数 -->
+    <select id="countByCondition" resultType="int" parameterType="com.blog.entity.Document">
+        SELECT COUNT(*) FROM def_document
+        <where>
+            <if test="id != null">AND id = #{id}</if>
+            <if test="docName != null">AND docName LIKE CONCAT('%', #{docName}, '%')</if>
+            <if test="docSize != null">AND docSize = #{docSize}</if>
+            <if test="docType != null">AND docType = #{docType}</if>
+            <if test="createdBy != null">AND created_by = #{createdBy}</if>
+            <if test="updatedBy != null">AND updated_by = #{updatedBy}</if>
+            <if test="createdDate != null">AND created_date = #{createdDate}</if>
+            <if test="updatedDate != null">AND updated_date = #{updatedDate}</if>
+            <if test="deletedFlag != null">AND deleted_flag = #{deletedFlag}</if>
+        </where>
+    </select>
+</mapper>

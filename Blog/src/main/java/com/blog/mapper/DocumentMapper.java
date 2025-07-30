@@ -24,4 +24,6 @@ public interface DocumentMapper {
     int countAll();
     // 按条件统计
     int countByCondition(Document condition);
+
+    int batchInsert(@Param("documents") List<Document> documents);
 }

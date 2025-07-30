@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface DocumentService {
     int insert(Document document);
+
+    int batchInsert(List<Document> documents);
     int deleteById(String id);
     int updateById(Document document);
     Document selectById(String id);
